@@ -95,7 +95,6 @@ const EditAsset = () => {
           <span>Back to Inventory</span>
         </Link>
  
-        {/* Title */}
         <div className="mb-8">
           <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
             Modify Asset Details

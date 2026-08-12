@@ -1,6 +1,5 @@
 const AuditLog = require('../models/AuditLog');
 
-// Get all audit logs (Admin only)
 const getAuditLogs = async (req, res) => {
   try {
     const logs = await AuditLog.find({})

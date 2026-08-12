@@ -1,10 +1,9 @@
 const AuditLog = require('../models/AuditLog');
 
 /**
- * Log activity helper to record administrative or request events
- * @param {string} userId - ID of the user performing the action
- * @param {string} action - Action description label
- * @param {string} details - Detailed notes on the action
+ * @param {string} userId
+ * @param {string} action
+ * @param {string} details
  */
 const logActivity = async (userId, action, details) => {
   try {

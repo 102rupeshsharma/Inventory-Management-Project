@@ -2,10 +2,8 @@ const User = require('../models/User');
 const Asset = require('../models/Asset');
 const Request = require('../models/Request');
 
-// Database seeder logic to create default demo users and assets
 const seedData = async () => {
   try {
-    // 1. Delete existing seeded users and request histories to start fresh
     await User.deleteMany({
       email: { $in: ['admin@smartasset.com', 'manager@smartasset.com', 'employee@smartasset.com'] }
     });
@@ -18,30 +16,27 @@ const seedData = async () => {
       {
         name: 'System Admin',
         email: 'admin@smartasset.com',
-        password: 'Admin@123', // Hashed automatically by pre-save hook in User model
+        password: '', 
         role: 'admin'
       },
       {
         name: 'Inventory Manager',
         email: 'manager@smartasset.com',
-        password: 'Manager@123', // Hashed automatically by pre-save hook in User model
+        password: 'Manager@123', 
         role: 'manager'
       },
       {
         name: 'Regular Employee',
         email: 'employee@smartasset.com',
-        password: 'Employee@123', // Hashed automatically by pre-save hook in User model
+        password: 'Employee@123',
         role: 'employee'
       }
     ];
-
-    // Using create() instead of insertMany() to trigger password hashing pre-save hooks
     const createdUsers = await User.create(demoUsers);
     console.log('Demo users successfully seeded with hashed passwords!');
 
     const adminUser = createdUsers.find(u => u.role === 'admin');
 
-    // 2. Clear old assets and seed fresh dummy inventory
     await Asset.deleteMany({});
     console.log('Cleared old assets database. Seeding 120 dummy assets...');
 

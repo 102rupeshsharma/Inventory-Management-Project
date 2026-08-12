@@ -97,7 +97,6 @@ const AuditLogs = () => {
     <div className="min-h-screen bg-gray-50 text-gray-900 pb-12 pt-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header Block */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
           <div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight flex items-center gap-2.5">
@@ -125,7 +124,6 @@ const AuditLogs = () => {
           </div>
         )}
 
-        {/* Filter and Search Box */}
         <div className="mb-6 p-4 bg-white border border-gray-200 rounded-2xl flex flex-col sm:flex-row gap-4 items-center shadow-sm">
           <div className="relative w-full sm:flex-grow">
             <Search className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -153,7 +151,6 @@ const AuditLogs = () => {
           </div>
         </div>
 
-        {/* Logs Table Output */}
         {filteredLogs.length === 0 ? (
           <div className="bg-white border border-gray-200 rounded-3xl p-12 text-center flex flex-col items-center justify-center shadow-sm animate-fade-in">
             <div className="w-16 h-16 rounded-2xl bg-gray-50 border border-gray-200 flex items-center justify-center mb-4 text-gray-400">

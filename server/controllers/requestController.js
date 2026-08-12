@@ -46,7 +46,6 @@ const createRequest = async (req, res) => {
 
     const savedRequest = await newRequest.save();
 
-    // Audit Log Activity
     await logActivity(req.user.id, 'Request Submitted', `Submitted request for asset: ${asset.name} (S/N: ${asset.serialNumber})`);
 
     res.status(201).json({
@@ -134,7 +133,6 @@ const approveRequest = async (req, res) => {
     asset.status = 'assigned';
     await asset.save();
 
-    // Audit Log Activity
     await logActivity(req.user.id, 'Request Approved', `Approved request for asset: ${asset.name} (S/N: ${asset.serialNumber})`);
 
     res.json({
@@ -171,12 +169,10 @@ const rejectRequest = async (req, res) => {
     request.approvedBy = req.user.id;
     await request.save();
 
-    // Load asset details to log info
     const asset = await Asset.findById(request.assetId);
     const assetName = asset ? asset.name : 'N/A';
     const serialNumber = asset ? asset.serialNumber : 'N/A';
 
-    // Audit Log Activity
     await logActivity(req.user.id, 'Request Rejected', `Rejected request for asset: ${assetName} (S/N: ${serialNumber})`);
 
     res.json({

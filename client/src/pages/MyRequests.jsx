@@ -174,7 +174,6 @@ const MyRequests = () => {
               Available Corporate Assets
             </h2>
 
-            {/* Filter and Search Panel */}
             <div className="mb-6 p-4 bg-white border border-gray-200 rounded-2xl flex flex-col sm:flex-row gap-4 items-center shadow-sm">
               <div className="relative w-full sm:flex-grow">
                 <Search className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -257,7 +256,6 @@ const MyRequests = () => {
                   })}
                 </div>
 
-                {/* Pagination Controls */}
                 <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-4 border-t border-gray-200">
                   <div className="text-xs text-gray-500">
                     Showing <span className="font-semibold text-gray-800">{availableAssets.length}</span> of{' '}

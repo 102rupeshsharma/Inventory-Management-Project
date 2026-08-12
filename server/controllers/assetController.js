@@ -90,7 +90,6 @@ const createAsset = async (req, res) => {
 
     const savedAsset = await newAsset.save();
 
-    // Audit Log Activity
     await logActivity(req.user.id, 'Asset Created', `Created asset: ${savedAsset.name} (S/N: ${savedAsset.serialNumber})`);
 
     res.status(201).json({
@@ -139,7 +138,6 @@ const updateAsset = async (req, res) => {
 
     const updatedAsset = await asset.save();
 
-    // Audit Log Activity
     await logActivity(req.user.id, 'Asset Updated', `Updated asset: ${updatedAsset.name} (S/N: ${updatedAsset.serialNumber})`);
 
     res.json({
@@ -166,7 +164,6 @@ const deleteAsset = async (req, res) => {
 
     await Asset.findByIdAndDelete(req.params.id);
 
-    // Audit Log Activity
     await logActivity(req.user.id, 'Asset Deleted', `Deleted asset: ${asset.name} (S/N: ${asset.serialNumber})`);
 
     res.json({

@@ -8,7 +8,6 @@ const Users = () => {
   const navigate = useNavigate();
   const currentUser = useMemo(() => getUser(), []);
 
-  // 1. Route guard - Admin only
   useEffect(() => {
     if (!currentUser) {
       navigate('/login');
@@ -24,10 +23,8 @@ const Users = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  // Selected User for Edit/Delete
   const [selectedUser, setSelectedUser] = useState(null);
 
-  // Create Form States
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -36,7 +33,6 @@ const Users = () => {
   const [formLoading, setFormLoading] = useState(false);
   const [formError, setFormError] = useState('');
 
-  // Edit Form States
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editName, setEditName] = useState('');
   const [editEmail, setEditEmail] = useState('');
@@ -45,7 +41,6 @@ const Users = () => {
   const [editFormError, setEditFormError] = useState('');
   const [editFormLoading, setEditFormLoading] = useState(false);
 
-  // Delete Confirm States
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
 
@@ -184,7 +179,6 @@ const Users = () => {
     <div className="min-h-screen bg-gray-50 text-gray-900 pb-12 pt-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header Block */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
           <div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight flex items-center gap-2.5">
@@ -214,7 +208,6 @@ const Users = () => {
           </div>
         </div>
 
-        {/* Global Page Banners */}
         {error && (
           <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm flex items-start gap-3">
             <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
@@ -229,7 +222,6 @@ const Users = () => {
           </div>
         )}
 
-        {/* Users Table */}
         {users.length === 0 ? (
           <div className="bg-white border border-gray-200 rounded-3xl p-12 text-center flex flex-col items-center justify-center shadow-sm">
             <div className="w-16 h-16 rounded-2xl bg-gray-50 border border-gray-200 flex items-center justify-center mb-4 text-gray-400">
@@ -293,7 +285,6 @@ const Users = () => {
 
       </div>
 
-      {/* Create User Dialog Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/50 backdrop-blur-sm">
           <div className="w-full max-w-md bg-white border border-gray-200 rounded-3xl p-6 shadow-2xl animate-fade-in relative">
@@ -414,7 +405,6 @@ const Users = () => {
         </div>
       )}
 
-      {/* Edit User Dialog Modal */}
       {isEditModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/50 backdrop-blur-sm">
           <div className="w-full max-w-md bg-white border border-gray-200 rounded-3xl p-6 shadow-2xl animate-fade-in relative">
@@ -538,7 +528,6 @@ const Users = () => {
         </div>
       )}
 
-      {/* Delete User Confirmation Modal */}
       {isDeleteModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/50 backdrop-blur-sm">
           <div className="w-full max-w-sm bg-white border border-gray-200 rounded-3xl p-6 shadow-2xl text-center relative">

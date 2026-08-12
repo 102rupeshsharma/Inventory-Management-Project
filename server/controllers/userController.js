@@ -1,6 +1,5 @@
 const User = require('../models/User');
 
-// Create a new user (Admin only)
 const createUser = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
@@ -19,7 +18,6 @@ const createUser = async (req, res) => {
       });
     }
 
-    // Pass password directly to User.create - the pre-save hook in User model handles hashing automatically
     const user = await User.create({
       name,
       email,
@@ -41,7 +39,6 @@ const createUser = async (req, res) => {
   }
 };
 
-// List all users (Admin only)
 const getUsers = async (req, res) => {
   try {
     const users = await User.find({}).select('-password').sort({ createdAt: -1 });
@@ -64,7 +61,6 @@ const updateUser = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    // Safeguard: Prevent logged-in admin from changing their own role
     if (req.user.id.toString() === userId.toString() && role && role !== user.role) {
       return res.status(400).json({ message: 'You cannot change your own role' });
     }
@@ -79,7 +75,7 @@ const updateUser = async (req, res) => {
 
     if (name) user.name = name;
     if (role) user.role = role;
-    if (password) user.password = password; // pre-save hook hashes this automatically on save
+    if (password) user.password = password; 
 
     await user.save();
 
@@ -99,7 +95,6 @@ const deleteUser = async (req, res) => {
   try {
     const userId = req.params.id;
 
-    // Safeguard: Prevent admin from deleting themselves
     if (req.user.id.toString() === userId.toString()) {
       return res.status(400).json({ message: 'You cannot delete your own admin account' });
     }

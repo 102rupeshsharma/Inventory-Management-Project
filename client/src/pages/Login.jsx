@@ -23,14 +23,9 @@ const Login = ({ onLoginSuccess }) => {
 
     try {
       const data = await loginUser(email, password, role);
-      // Save token and user details to localStorage
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
-
-      // Update application auth state
       onLoginSuccess(data.user);
-
-      // Redirect to dashboard
       navigate('/dashboard');
     } catch (err) {
       setError(err.message || 'Login failed. Please check your credentials.');
@@ -39,7 +34,6 @@ const Login = ({ onLoginSuccess }) => {
     }
   };
 
-  // Helper function to quickly fill demo credentials
   const fillCredentials = (demoEmail, demoPassword, demoRole) => {
     setEmail(demoEmail);
     setPassword(demoPassword);
