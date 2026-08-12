@@ -86,4 +86,5 @@ const AssetTable = ({ assets, onEdit, onDelete, currentUser }) => {
   );
 };
 
+
 export default AssetTable;
