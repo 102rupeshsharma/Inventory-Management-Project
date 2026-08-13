@@ -66,14 +66,6 @@ JWT_SECRET=your_jwt_signing_secret_string
 ```
 *Note: The frontend client is preconfigured to communicate with the backend at `http://localhost:8001/api`.*
 
-### Database Seeding
-To initialize the database with default demo users and mock inventory assets:
-```bash
-cd server
-node seed/seedUsers.js
-```
-*(This deletes existing dummy seeds and inserts 3 default roles and 120 assets into your database).*
-
 ### Running the Application
 
 1.  **Start Backend Server:**
@@ -93,7 +85,7 @@ node seed/seedUsers.js
 ---
 
 ## 4. Default Test Credentials
-The database seeder initializes the system with three default accounts:
+The database has three default accounts:
 
 | Role | Email | Password |
 | :--- | :--- | :--- |
@@ -101,7 +93,7 @@ The database seeder initializes the system with three default accounts:
 | **Manager** | `manager@smartasset.com` | `Manager@123` |
 | **Employee** | `employee@smartasset.com` | `Employee@123` |
 
-*Note: In production environments, seed accounts must be changed or deleted. Additional users can be registered dynamically via the Admin "User Management" dashboard panel.*
+*Note: Additional users can be registered dynamically via the Admin "User Management" dashboard panel.*
 
 ---
 
