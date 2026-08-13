@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
-const seedUsers = require('./seed/seedUsers');
+// const seedUsers = require('./seed/seedUsers');
 const authRoutes = require('./routes/authRoutes');
 const assetRoutes = require('./routes/assetRoutes');
 const requestRoutes = require('./routes/requestRoutes');
@@ -12,9 +12,10 @@ const auditRoutes = require('./routes/auditRoutes');
 const app = express();
 
 
-connectDB().then(() => {
-  seedUsers();
-});
+// connectDB().then(() => {
+//   seedUsers();
+// });
+connectDB();
 
 app.use(cors());
 app.use(express.json());
